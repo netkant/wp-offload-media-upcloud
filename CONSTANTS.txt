@@ -1,0 +1,32 @@
+// ** Settings for WP Offload Media - UpCloud. ** //
+
+/** The UpCloud Object Storage endpoint URL (required) */
+define('AS3CF_UPCLOUD_ENDPOINT', 'your_upcloud_endpoint');
+
+/** The UpCloud Object Storage region (required) */
+define('AS3CF_UPCLOUD_REGION', 'your_upcloud_region');
+
+/** The UpCloud Object Storage access key ID (required) */
+define('AS3CF_UPCLOUD_ACCESS_ID', 'your_upcloud_access_key_id');
+
+/** The UpCloud Object Storage secret access key (required) */
+define('AS3CF_UPCLOUD_SECRET_KEY', 'your_upcloud_secret_access_key');
+
+/**
+ * Override default bucket name (optional).
+ * Default is "sanitize_title($host)" e.g. "netkant.com" becomes "netkant-com".
+ */
+define('AS3CF_UPCLOUD_BUCKET', 'your_upcloud_bucket');
+
+/**
+ * Override default domain (optional).
+ * Default is "$host" e.g. "netkant.com", it becomes "s3.netkant.com" 
+ * since the plugin will automatically prefix "s3." to the domain.
+ */
+define('AS3CF_UPCLOUD_DOMAIN', 'your_custom_domain'); // "s3." will be prefixed automatically
+
+/**
+ * Enable debug mode (optional).
+ * Set to true to enable debug mode, which will disable "Remove Local Media" etc.
+ */
+define('AS3CF_UPCLOUD_DEBUG', false);
