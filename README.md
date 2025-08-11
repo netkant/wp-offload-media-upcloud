@@ -8,7 +8,7 @@ The plugin can setup the recommended settings for you, what we call "managed set
 
 | Constant | Default | Required | Example |
 | -------- | ------- | ------- | ------- |
-| AS3CF_UPCLOUD_ENDPOINT | *null* | yes | https://ub2m4.upcloudobjects.com |
+| AS3CF_UPCLOUD_ENDPOINT | *null* | yes | https://ab1c2.upcloudobjects.com |
 | AS3CF_UPCLOUD_REGION | *null* | yes | europe-2 |
 | AS3CF_UPCLOUD_ACCESS_ID | *null* | yes | AEIABA1... |
 | AS3CF_UPCLOUD_SECRET_KEY | *null* | yes | uyC5Bx3... |
