@@ -29,7 +29,7 @@ add_filter('as3cf_upcloud_endpoint', function($endpoint) {
 Example, set region and keys via filter:
 
 ```php
-add_filter('as3cf_upcloud_endpoint', function($settings) {
+add_filter('as3cf_upcloud_settings', function($settings) {
     return array_merge($settings, [
         'region'            => 'europe-2',
         'access-key-id'     => 'AEIABA1...',
