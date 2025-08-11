@@ -16,7 +16,7 @@ The plugin can setup the recommended settings for you, what we call "managed set
 | AS3CF_UPCLOUD_DOMAIN | $host | no | example.com |
 | AS3CF_UPCLOUD_DEBUG | false | no | true |
 
-All settings can be set using `define($constant_name)` in *wp-config.php*  (see CONSTANTS.txt)or using `add_filter($hook_name, $callback)` where `$hook_name` is the contant name in lower case (e.g. `as3cf_upcloud_bucket`). An additional `as3cf_upcloud_settings` hook is provided where all settings can be modified before `AS3CF_SETTINGS` is defined.
+All settings can be set using `define($constant_name)` in *wp-config.php*  (see CONSTANTS.txt) or using `add_filter($hook_name, $callback)` where `$hook_name` is the contant name in lower case (e.g. `as3cf_upcloud_bucket`). An additional `as3cf_upcloud_settings` hook is provided where all settings can be modified before `AS3CF_SETTINGS` is defined.
 
 Example, set endpoint via filter:
 
