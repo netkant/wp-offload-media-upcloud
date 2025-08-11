@@ -18,6 +18,26 @@ The plugin can setup the recommended settings for you, what we call "managed set
 
 All settings can be set using `define($constant_name)` in *wp-config.php* or using `add_filter($hook_name, $callback)` where `$hook_name` is the contant name in lower case (e.g. `as3cf_upcloud_bucket`). An additional `as3cf_upcloud_settings` hook is provided where all settings can be modified before `AS3CF_SETTINGS` is defined.
 
+Example, set endpoint via filter:
+
+```php
+add_filter('as3cf_upcloud_endpoint', function($endpoint) {
+    return 'https://ub2m4.upcloudobjects.com';
+});
+```
+
+Example, set region and keys via filter:
+
+```php
+add_filter('as3cf_upcloud_endpoint', function($settings) {
+    return array_merge($settings, [
+        'region'            => 'europe-2',
+        'access-key-id'     => 'AEIABA1...',
+        'secret-access-key' => 'uyC5Bx3...',
+    ]);
+});
+```
+
 ## User-controlled Settings
 
 If you want to control the settings yourself, feel free to define `AS3CF_SETTINGS` in *wp-config.php* - but **remember**, the `AS3CF_UPCLOUD_ENDPOINT` is still required for the plugin to work with UpCloud Object Storage.
