@@ -76,11 +76,12 @@ class WPOM_UpCloud_Tweaks
      */
     public function as3cf_aws_s3_client_args(array $args): array
     {
-        if (!defined('AS3CF_UPCLOUD_ENDPOINT')) {
+        $endpoint = WPOM_UpCloud::get_setting('AS3CF_UPCLOUD_ENDPOINT');
+        if (empty($endpoint)) {
             return $args;
         }
 
-        $args['endpoint']                = AS3CF_UPCLOUD_ENDPOINT;
+        $args['endpoint']                = $endpoint;
         $args['use_path_style_endpoint'] = true;
 
         return $args;

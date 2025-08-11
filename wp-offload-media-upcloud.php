@@ -11,7 +11,7 @@
  * 
  * @wordpress-plugin
  * @author Henrik Urlund <henrik@netkant.com>
- * @license GPL-2.0+
+ * @license GPL-3.0+
  * @package WP Offload Media - UpCloud
  */
 

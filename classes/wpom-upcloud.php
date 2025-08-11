@@ -13,13 +13,21 @@ class WPOM_UpCloud
     }
 
     /**
+     * Get a setting value by name, with an optional default.
+     */
+    public static function get_setting($name, $default = '')
+    {
+        return defined($name) ? constant($name) : apply_filters(strtolower($name), $default);
+    }
+
+    /**
      * Initialize the settings for WP Offload Media - UpCloud.
      * This will define the AS3CF_SETTINGS constant with the UpCloud settings.
      */
     public function init_settings(): void
     {
         // Check if the required constant is defined, otherwise show an error notice
-        if (!defined('AS3CF_UPCLOUD_ENDPOINT')) {
+        if (!self::get_setting('AS3CF_UPCLOUD_ENDPOINT')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_constant_endpoint']);
         }
 
@@ -29,7 +37,7 @@ class WPOM_UpCloud
         }
 
         // Check if the required constants are defined, otherwise show an error notice
-        if (!defined('AS3CF_UPCLOUD_REGION') || !defined('AS3CF_UPCLOUD_ACCESS_ID') || !defined('AS3CF_UPCLOUD_SECRET_KEY')) {
+        if (!self::get_setting('AS3CF_UPCLOUD_REGION') || !self::get_setting('AS3CF_UPCLOUD_ACCESS_ID') || !self::get_setting('AS3CF_UPCLOUD_SECRET_KEY')) {
             add_action('admin_notices', [$this, 'admin_notice_missing_constants']);
         }
 
@@ -40,10 +48,10 @@ class WPOM_UpCloud
         define('AS3CF_SETTINGS', serialize(apply_filters('as3cf_upcloud_settings', [
             // provider settings
             'provider'               => 'aws',
-            'region'                 => AS3CF_UPCLOUD_REGION ?? '',
-            'access-key-id'          => AS3CF_UPCLOUD_ACCESS_ID ?? '',
-            'secret-access-key'      => AS3CF_UPCLOUD_SECRET_KEY ?? '',
-            'bucket'                 => defined('AS3CF_UPCLOUD_BUCKET') ? AS3CF_UPCLOUD_BUCKET : sanitize_title($host),
+            'region'                 => self::get_setting('AS3CF_UPCLOUD_REGION'),
+            'access-key-id'          => self::get_setting('AS3CF_UPCLOUD_ACCESS_ID'),
+            'secret-access-key'      => self::get_setting('AS3CF_UPCLOUD_SECRET_KEY'),
+            'bucket'                 => self::get_setting('AS3CF_UPCLOUD_BUCKET', sanitize_title($host)),
             #'block-public-access'       => false, // currently not supported in wp-config.php
             #'object-ownership-enforced' => false, // currently not supported in wp-config.php
             // storage settings
@@ -51,14 +59,14 @@ class WPOM_UpCloud
             'enable-object-prefix'   => true,
             'object-prefix'          => 'wp-content/uploads/',
             'use-yearmonth-folders'  => true,
-            'remove-local-file'      => defined('AS3CF_UPCLOUD_DEBUG') ? !boolval(AS3CF_UPCLOUD_DEBUG) : true,
+            'remove-local-file'      => !boolval(self::get_setting('AS3CF_UPCLOUD_DEBUG', true)),
             'object-versioning'      => false,
             // delivery settings
             'delivery-provider'      => 'storage',
             'serve-from-s3'          => true,
             'force-https'            => true,
             'enable-delivery-domain' => true, // normally not supported by 'storage' provider
-            'delivery-domain'        => defined('AS3CF_UPCLOUD_DOMAIN') ? AS3CF_UPCLOUD_DOMAIN : $host, // "s3." will be prefixed automatically
+            'delivery-domain'        => self::get_setting('AS3CF_UPCLOUD_DOMAIN', $host), // "s3." will be prefixed automatically
         ])));
     }
 
