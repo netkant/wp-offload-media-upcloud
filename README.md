@@ -22,7 +22,7 @@ Example, set endpoint via filter:
 
 ```php
 add_filter('as3cf_upcloud_endpoint', function($endpoint) {
-    return 'https://ub2m4.upcloudobjects.com';
+    return 'https://ab1c2.upcloudobjects.com';
 });
 ```
 
@@ -44,6 +44,6 @@ If you want to control the settings yourself, feel free to define `AS3CF_SETTING
 
 | Constant | Default | Required | Example |
 | -------- | ------- | ------- | ------- |
-| AS3CF_UPCLOUD_ENDPOINT | *null* | yes | https://ub2m4.upcloudobjects.com |
+| AS3CF_UPCLOUD_ENDPOINT | *null* | yes | https://ab1c2.upcloudobjects.com |
 | AS3CF_SETTINGS | *null* | yes | See: [WP Offload Media Docs](https://deliciousbrains.com/wp-offload-media/doc/settings-constants/) |
 
